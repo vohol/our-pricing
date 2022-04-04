@@ -1,0 +1,226 @@
+@import "nullstyle.scss";
+
+$color-pale: #6E728E;
+$color-dark-pale: #4A4D60;
+$color-purple: #6D72DE;
+$purple-gradient: linear-gradient(135deg, #A2A7F0 0%, #696EDD 100%);
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.container {
+  max-width: 1050px;
+  padding: 64px 24px 71px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1080px) {
+  .container {
+    max-width: 1050px;
+    padding: 71px 0 0;
+    height: 100vh;
+  }
+}
+
+.oval-checkbox { 
+  &__slider{
+    position: relative;
+    width: 56px;
+    height: 32px;
+    border-radius: 16px;
+    background: $purple-gradient;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 24px;
+      height: 24px;
+      border-radius: 50px;
+      background: #fff;
+      right: 4px;
+      top: 4px;
+      transition: all 0.35s ease;
+    }
+  }
+  &__core {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  &__core:checked + .oval-checkbox__slider::after {
+    right: 28px;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.price {
+  background-color: #F7F7FE;
+  background-image: url('@img/background-mobile.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__title {
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    color: $color-pale;
+    margin-bottom: 40px;
+  }
+  &__toogle {
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  &__toogle-label {
+    font-size: 15px;
+    line-height: 28px;
+    color: $color-pale;
+    opacity: 0.5;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .price {
+    background-image: url('@img/background-group.png');
+    background-position: center;
+    background-size: cover;
+    &__toogle {
+      margin-bottom: 64px;
+      
+    }
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+    }
+  }
+}
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  width: 100%;
+  padding: 31px 29px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 20px 40px rgba(212, 210, 244, 0.5);
+  border-radius: 10px;
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    color: $color-pale;
+    margin-bottom: 24px;
+  }
+  &__price-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 32px;
+  }
+  &__currency-symbol {
+    font-size: 40px;
+    line-height: 49px;
+    letter-spacing: -1.2px;
+    color: $color-dark-pale;
+    margin-right: 8px;
+  }
+  &__price {
+    font-size: 72px;
+    line-height: 71px;
+    letter-spacing: -2.16px;
+    color: $color-dark-pale;
+  }
+  &__row, &__price-wrapper {
+      border-bottom: 1px solid rgba(110, 114, 142, 0.25);
+      width: 100%;
+      text-align: center;
+    }
+  &__row {
+    padding: 12px 0;
+
+    }
+  &__description {
+    font-size: 15px;
+    line-height: 28px;
+    color: $color-pale;
+  }
+  &__learn-more {
+    width: 100%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    color: #FFFFFF;
+    background: $purple-gradient;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 1.39286px;
+    border-radius: 6px;
+    margin-top: 32px;
+    border: 1px solid transparent;
+    border-right-color: #696EDD;
+    border-left-color: #A2A7F0;
+    transition: all 0.3s;
+    &:hover {
+      color: $color-purple;
+      background: #FFFFFF;
+      border: 1px solid $color-purple;
+    }
+  }
+  &--popular {
+    background: $purple-gradient;
+    .price-card__title,
+    .price-card__currency-symbol,
+    .price-card__price,
+    .price-card__description {
+      color: #fff;
+    }
+    .price-card__row,
+    .price-card__price-wrapper {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .price-card__learn-more {
+      background: #FFFFFF;
+      color: $color-purple;
+      border: 1px solid transparent;
+      &:hover {
+        background: transparent;
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .price-card {
+    padding: 31px;
+    &--popular {
+      padding-top: 55px;
+      padding-bottom: 55px;
+      
+    } 
+  }
+}
